@@ -7,6 +7,10 @@ export default function Home() {
         console.log('Adicionar participante')
     }
 
+    function handleRemoveParticipant(name: string) {
+        console.log(`Deletar participante: ${name}`)
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.eventName}>Nome do Evento</Text>
@@ -27,9 +31,18 @@ export default function Home() {
             </View>
 
             <View>
-                <Participant name="Matheus" />
-                <Participant name="Matheuszinho" />
-                <Participant name="Matheusao" />
+                <Participant
+                    name="Matheus"
+                    onRemove={() => handleRemoveParticipant('Matheus')}
+                />
+                <Participant
+                    name="Matheuszinho"
+                    onRemove={() => handleRemoveParticipant('Matheuszinho')}
+                />
+                <Participant
+                    name="Matheusao"
+                    onRemove={() => handleRemoveParticipant('Matheusao')}
+                />
             </View>
         </View>
     )

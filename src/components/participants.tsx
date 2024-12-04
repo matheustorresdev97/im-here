@@ -2,13 +2,11 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 type ParticipantProps = {
     name: string
+    onRemove: () => void
 }
 
-export function Participant({ name }: ParticipantProps) {
+export function Participant({ name, onRemove }: ParticipantProps) {
 
-    function handleDeleteParticipant() {
-        console.log('Deletar participante')
-    }
 
     return (
         <View style={styles.container}>
@@ -16,7 +14,7 @@ export function Participant({ name }: ParticipantProps) {
             <TouchableOpacity
                 style={styles.button}
                 activeOpacity={0.7}
-                onPress={handleDeleteParticipant}
+                onPress={onRemove}
             >
                 <Text style={styles.buttonText}>-</Text>
             </TouchableOpacity>
