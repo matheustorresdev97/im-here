@@ -1,6 +1,6 @@
 import {
+    Alert,
     FlatList,
-    ScrollView,
     StyleSheet,
     Text,
     TextInput,
@@ -9,37 +9,35 @@ import {
 } from 'react-native'
 
 import { Participant } from '@/components/participants'
+import { useState } from 'react'
 
 export default function Home() {
-    const participants = [
-        'Matheus',
-        'Matheuszinho',
-        'Pedro',
-        'Paulo',
-        'Lucas',
-        'Rafael',
-        'Julia',
-        'Isabella',
-        'André',
-        'Vinicius',
-        'Daniel',
-        'Gabriel',
-        'Beatriz',
-        'Fernanda',
-        'Carlos',
-        'Maria',
-        'João',
-        'Marcos',
-        'José',
-        'Antônio'
-    ]
+    const [participants, setParticipants] = useState<string[]>([])
+    const [participantName, setParticipantName] = useState('')
 
     function handleAddParticipant() {
-        console.log('Adicionar participante')
+        if (participants.includes(participantName)) {
+            return Alert.alert(
+                'Participante existente',
+                'Ja existe um participante com esse nome'
+            )
+        }
+
+        setParticipants(prevState => [...prevState, participantName])
+        setParticipantName('')
     }
 
     function handleRemoveParticipant(name: string) {
-        console.log(`Deletar participante: ${name}`)
+        Alert.alert('Remover', `Remover o participante ${name}?`, [
+            {
+                text: 'Sim',
+                onPress: () => Alert.alert('Deletado!'),
+            },
+            {
+                text: 'Não',
+                style: 'cancel',
+            },
+        ])
     }
 
     return (
@@ -51,6 +49,8 @@ export default function Home() {
                     style={styles.input}
                     placeholder="Nome do participante"
                     placeholderTextColor="#6b6b6b"
+                    value={participantName}
+                    onChangeText={setParticipantName}
                 />
                 <TouchableOpacity
                     style={styles.button}
