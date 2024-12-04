@@ -16,14 +16,18 @@ export default function Home() {
     const [participantName, setParticipantName] = useState('')
 
     function handleAddParticipant() {
-        if (participants.includes(participantName)) {
+        const isParticipantNameEmpty = participantName.trim() === ''
+
+        if (isParticipantNameEmpty) return
+
+        if (participants.includes(participantName.trim())) {
             return Alert.alert(
                 'Participante existente',
                 'Ja existe um participante com esse nome'
             )
         }
 
-        setParticipants(prevState => [...prevState, participantName])
+        setParticipants(prevState => [...prevState, participantName.trim()])
         setParticipantName('')
     }
 
