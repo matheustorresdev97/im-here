@@ -27,9 +27,9 @@ export default function Home() {
             </View>
 
             <View>
-                <Participant />
-                <Participant />
-                <Participant />
+                <Participant name="Matheus" />
+                <Participant name="Matheuszinho" />
+                <Participant name="Matheusao" />
             </View>
         </View>
     )

@@ -1,6 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-export function Participant() {
+type ParticipantProps = {
+    name: string
+}
+
+export function Participant({ name }: ParticipantProps) {
 
     function handleDeleteParticipant() {
         console.log('Deletar participante')
@@ -8,7 +12,7 @@ export function Participant() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.name}>Nome do participante</Text>
+            <Text style={styles.name}>{name}</Text>
             <TouchableOpacity
                 style={styles.button}
                 activeOpacity={0.7}
