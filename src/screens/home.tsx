@@ -1,4 +1,5 @@
 import {
+    FlatList,
     ScrollView,
     StyleSheet,
     Text,
@@ -60,17 +61,23 @@ export default function Home() {
                 </TouchableOpacity>
             </View>
 
-            <View>
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    {participants.map((participant, index) => (
-                        <Participant
-                            key={participant}
-                            name={participant}
-                            onRemove={() => handleRemoveParticipant(participant)}
-                        />
-                    ))}
-                </ScrollView>
-            </View>
+            <FlatList
+                data={participants}
+                keyExtractor={item => item}
+                renderItem={({ item }) => (
+                    <Participant
+                        name={item}
+                        onRemove={() => handleRemoveParticipant(item)}
+                    />
+                )}
+                showsVerticalScrollIndicator={false}
+                ListEmptyComponent={() => (
+                    <Text style={styles.listEmptyText}>
+                        Ninguém chegou no evento ainda? Adicione participantes a sua lista
+                        de presença.
+                    </Text>
+                )}
+            />
         </View>
     )
 }
@@ -119,5 +126,10 @@ const styles = StyleSheet.create({
         gap: 12,
         marginTop: 36,
         marginBottom: 42,
+    },
+    listEmptyText: {
+        color: '#fafafa',
+        fontSize: 14,
+        textAlign: 'center',
     },
 })
