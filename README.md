@@ -22,17 +22,13 @@ A interface é estilizada com **StyleSheet**, destacando boas práticas de organ
 
 ## 📸 Imagens de Exemplo  
 
-### Tela 1:  
-![Tela 1](.github/image1.png)  
+<img src=".github/image1.png" alt="Tela 1" width="300"/> 
 
-### Tela 2:  
-![Tela 2](.github/image2.png)  
+<img src=".github/image2.png" alt="Tela 2" width="300"/>  
 
-### Tela 3:  
-![Tela 3](.github/image3.png)  
+<img src=".github/image3.png" alt="Tela 3" width="300"/>  
 
-### Tela 4:  
-![Tela 4](.github/image4.png)  
+<img src=".github/image4.png" alt="Tela 4" width="300"/>  
 
 ---
 
